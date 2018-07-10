@@ -1,0 +1,13 @@
+version: '2'
+services:
+  db:
+    image: postgres
+  api:
+    build: .
+    command: bash -c "bundle exec rails s -b '0.0.0.0'"
+    volumes:
+      - .:/lettuce_api
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
